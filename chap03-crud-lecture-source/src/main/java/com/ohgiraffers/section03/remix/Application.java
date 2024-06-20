@@ -1,4 +1,4 @@
-package com.ohgiraffers.section01.xmlconfig;
+package com.ohgiraffers.section03.remix;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -55,6 +55,8 @@ public class Application {
 
         return parameter;
     }
+
+    // 메뉴 정보를 입력받는 메소드
     private static Map<String, String> inputMenu() {
         Scanner sc = new Scanner(System.in);
         System.out.println("메뉴 이름을 입력하세요 : ");
@@ -100,5 +102,4 @@ public class Application {
         return parameter;
 
     }
-
 }

@@ -23,4 +23,19 @@ public class MenuDAO {
         // parameter는 뒤에다가 넣어준다 => , code <- 이거
 
     }
+
+    public int insertMenu(SqlSession sqlSession, MenuDTO menu) {
+
+        return sqlSession.insert("insert_menu", menu);
+    }
+
+    public int updateMenu(SqlSession sqlSession, MenuDTO menu) {
+
+        return sqlSession.update("MenuMapper.updateMenu", menu);
+    }
+
+    public int deleteMenu(SqlSession sqlSession, int code) {
+
+        return sqlSession.delete("MenuMapper.deleteMenu", code);
+    }
 }

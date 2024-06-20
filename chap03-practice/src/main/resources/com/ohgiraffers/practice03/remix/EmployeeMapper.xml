@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+    remix Mapper
+    1. DAO 인터페이스와 동일한 패키지에 위치해야 한다.
+    2. DAO 인터페이스의 풀네임을 namespace로 지정해야 한다.
+    3. mapper 인터페이스와 xml의 이름이 동일해야 한다.
+    (MenuMapper.xml -> MenuMapper.interface)
+    4. 작성한 메소드의 이름과 아이디가 일치하고, 리턴 타입이 일치하는 쿼리문을 모두 작성해야 한다.
+-->
+
+<mapper namespace="com.ohgiraffers.practice03.remix.EmployeeMapper">
+    <resultMap id="employeeResultMap" type="com.ohgiraffers.practice03.remix.EmployeeDTO">
+        <result property="empId" column="EMP_ID"/>
+        <result property="empName" column="EMP_NAME"/>
+        <result property="empNo" column="EMP_NO"/>
+        <result property="email" column="EMAIL"/>
+        <result property="phone" column="PHONE"/>
+        <result property="deptCode" column="DEPT_CODE"/>
+        <result property="jobCode" column="JOB_CODE"/>
+        <result property="salLevel" column="SAL_LEVEL"/>
+        <result property="salary" column="SALARY"/>
+        <result property="bonus" column="BONUS"/>
+        <result property="managerId" column="MANAGER_ID"/>
+        <result property="hireDate" column="HIRE_DATE"/>
+        <result property="entDate" column="ENT_DATE"/>
+        <result property="entYn" column="ENT_YN"/>
+    </resultMap>
+
+    <select id="selectAllEmployee" resultMap="employeeResultMap">
+        select EMP_ID,
+        EMP_NAME,
+        EMP_NO,
+        EMAIL,
+        PHONE,
+        DEPT_CODE,
+        JOB_CODE,
+        SAL_LEVEL,
+        SALARY,
+        BONUS,
+        MANAGER_ID,
+        HIRE_DATE,
+        ENT_DATE,
+        ENT_YN
+        from employee
+        order by EMP_ID
+    </select>
+
+    <select id="selectEmpByCode" parameterType="_int" resultMap="employeeResultMap">
+        select
+        EMP_ID,
+        EMP_NAME,
+        EMP_NO,
+        EMAIL,
+        PHONE,
+        DEPT_CODE,
+        JOB_CODE,
+        SAL_LEVEL,
+        SALARY,
+        BONUS,
+        MANAGER_ID,
+        HIRE_DATE,
+        ENT_DATE,
+        ENT_YN
+        from employee
+        where EMP_ID = #{ code }
+    </select>
+
+    <select id="selectEmpByName" parameterType="String" resultMap="employeeResultMap">
+        select
+        EMP_ID,
+        EMP_NAME,
+        EMP_NO,
+        EMAIL,
+        PHONE,
+        DEPT_CODE,
+        JOB_CODE,
+        SAL_LEVEL,
+        SALARY,
+        BONUS,
+        MANAGER_ID,
+        HIRE_DATE,
+        ENT_DATE,
+        ENT_YN
+        from employee
+        where EMP_NAME = #{ name }
+    </select>
+
+    <insert id="insertEmployee" parameterType="com.ohgiraffers.practice03.remix.EmployeeDTO">
+        insert into employee (
+        EMP_ID,
+        EMP_NAME,
+        EMP_NO,
+        JOB_CODE,
+        SAL_LEVEL
+        ) values (
+        #{ empId },
+        #{ empName },
+        #{ empNo },
+        #{ jobCode },
+        #{ salLevel }
+        )
+    </insert>
+
+    <update id="modifyEmployee" parameterType="com.ohgiraffers.practice03.remix.EmployeeDTO">
+        update employee
+        set
+        EMP_NAME =  #{ empName },
+        EMP_NO = #{ empNo },
+        JOB_CODE = #{ jobCode },
+        SAL_LEVEL = #{ salLevel }
+        where
+        EMP_ID = #{ empId }
+    </update>
+
+    <delete id="deleteEmployee" parameterType="_int">
+        delete
+        from employee
+        where EMP_ID = #{ empId }
+    </delete>
+
+
+
+
+
+
+</mapper>
