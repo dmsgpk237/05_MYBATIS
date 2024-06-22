@@ -43,4 +43,18 @@ public class JobController {
         }
 
     }
+
+    public void selectJobByName(Map<String, String> parameter) {
+
+        String name = parameter.get("name");
+
+        JobDTO job = jobService.selectJobByName(name);
+
+        if (job != null) {
+            jobPrintResult.printJob(job);
+        } else {
+            jobPrintResult.printErrorMessage("selectOne");
+        }
+
+    }
 }

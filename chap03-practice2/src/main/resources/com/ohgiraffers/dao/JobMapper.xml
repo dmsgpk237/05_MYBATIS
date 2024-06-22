@@ -32,5 +32,13 @@
 
     </select>
 
+    <select id="selectJobByName" parameterType="String" resultMap="jobResultMap">
+        select JOB_CODE,
+        JOB_NAME
+        from job
+        where JOB_NAME = #{ name }
+
+    </select>
+
 
 </mapper>

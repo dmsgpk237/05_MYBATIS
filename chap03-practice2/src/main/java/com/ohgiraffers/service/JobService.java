@@ -36,4 +36,18 @@ public class JobService {
 
         return job;
     }
+
+    public JobDTO selectJobByName(String name) {
+
+        SqlSession sqlSession = getSqlSession();
+
+        jobMapper = sqlSession.getMapper(JobMapper.class);
+
+        JobDTO job = jobMapper.selectJobByName(name);
+
+        sqlSession.close();
+
+        return job;
+
+    }
 }

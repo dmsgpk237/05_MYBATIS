@@ -41,7 +41,7 @@ public class Application2 {
             switch (no) {
                 case 1 : jobController.selectAllJob(); break;
                 case 2 : jobController.selectJobByCode(inputJobCode()); break;
-//                case 3 : jobController.selectJobByName(inputJobName()); break;
+                case 3 : jobController.selectJobByName(inputJobName()); break;
 //                case 4 :  break;
 //                case 5 :  break;
 //                case 6 :  break;
@@ -64,6 +64,18 @@ public class Application2 {
         parameter.put("code", code);
 
         return parameter;
+    }
+
+    private static Map<String, String> inputJobName() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("직급 이름을 입력하세요 : ");
+        String name = sc.next();
+
+        Map<String, String> parameter = new HashMap<>();
+        parameter.put("name", name);
+
+        return parameter;
+
     }
 
 }
