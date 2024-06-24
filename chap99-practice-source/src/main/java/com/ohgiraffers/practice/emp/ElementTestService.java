@@ -38,15 +38,15 @@ public class ElementTestService {
 
         List<DepartmentAndEmployeeDTO> deptList = mapper.selectResultMapCollectionTest();
 
-//        for (DepartmentAndEmployeeDTO dept : deptList) {
-//            System.out.println(dept);
-//        }
-
-        List<EmployeeDTO> empList = deptList.get(1).getEmployeeList();
-
-        for (EmployeeDTO emp : empList) {
-            System.out.println(emp);
+        for (DepartmentAndEmployeeDTO dept : deptList) {
+            System.out.println(dept);
         }
+
+//        List<EmployeeDTO> empList = deptList.get(1).getEmployeeList();
+//
+//        for (EmployeeDTO emp : empList) {
+//            System.out.println(emp);
+//        }
 
         sqlSession.close();
 
