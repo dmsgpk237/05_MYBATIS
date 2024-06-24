@@ -50,4 +50,22 @@ public class JobService {
         return job;
 
     }
+
+    public boolean registJob(JobDTO job) {
+
+        SqlSession sqlSession = getSqlSession();
+        jobMapper = sqlSession.getMapper(JobMapper.class);
+
+        int result = jobMapper.insertJob(job);
+
+        if (result > 0) {
+            sqlSession.commit();
+        } else {
+            sqlSession.rollback();
+        }
+
+        sqlSession.close();
+
+        return result > 0 ? true : false;
+    }
 }

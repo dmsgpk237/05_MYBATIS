@@ -57,4 +57,22 @@ public class JobController {
         }
 
     }
+
+    public void registJob(Map<String, String> parameter) {
+
+        String jobCode = parameter.get("jobCode");
+        String jobName = parameter.get("jobName");
+
+        JobDTO job = new JobDTO();
+        job.setJobCode(jobCode);
+        job.setJobName(jobName);
+
+        if (jobService.registJob(job)) {
+            jobPrintResult.printSuccessMessage("insert");
+
+        } else {
+            jobPrintResult.printErrorMessage("insert");
+        }
+
+    }
 }

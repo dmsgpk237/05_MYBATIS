@@ -12,4 +12,8 @@ public interface JobMapper {
     JobDTO selectJobByCode(String code);
 
     JobDTO selectJobByName(String name);
+
+    int insertJob(JobDTO job);
+
+
 }

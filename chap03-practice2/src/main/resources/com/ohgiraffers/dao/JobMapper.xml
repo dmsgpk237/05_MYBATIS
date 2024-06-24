@@ -37,8 +37,17 @@
         JOB_NAME
         from job
         where JOB_NAME = #{ name }
-
     </select>
+
+    <insert id="insertJob" parameterType="com.ohgiraffers.dto.JobDTO">
+        insert into job(
+        JOB_CODE
+        JOB_NAME
+        ) values (
+        #{ jobCode }
+        #{ jobName }
+        )
+    </insert>
 
 
 </mapper>
