@@ -15,5 +15,8 @@ public interface JobMapper {
 
     int insertJob(JobDTO job);
 
+    int modifyJob(JobDTO job);
+
+    int deleteJob(String jobCode);
 
 }

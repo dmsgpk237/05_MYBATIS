@@ -64,7 +64,6 @@ public class Application {
     }
 
     // EmployeeName을 입력받는 메소드
-
     private static Map<String, String> inputEmployeeName() {
         Scanner sc = new Scanner(System.in);
         System.out.println("직원 이름을 입력하세요 : ");

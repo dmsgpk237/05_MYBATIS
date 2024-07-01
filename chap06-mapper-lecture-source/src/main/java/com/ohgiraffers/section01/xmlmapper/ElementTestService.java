@@ -108,4 +108,60 @@ public class ElementTestService {
         sqlSession.close();
 
     }
+
+    public void selectSqqlTest() {
+
+        SqlSession sqlSession = getSqlSession();
+
+        mapper = sqlSession.getMapper(ElementTestMapper.class);
+
+        List<MenuDTO> menuList = mapper.selectSqlTest();
+
+        for(MenuDTO menu : menuList) {
+            System.out.println(menu);
+        }
+
+        sqlSession.close();
+
+    }
+
+    public void insertMenuTest(MenuDTO menu) {
+
+        SqlSession sqlSession = getSqlSession();
+        mapper = sqlSession.getMapper(ElementTestMapper.class);
+
+        int result = mapper.insertMenuTest(menu);
+
+        if(result > 0) {
+            System.out.println("메뉴 등록 성공 !");
+            sqlSession.commit();
+        } else {
+            System.out.println("메뉴 등록 실패 !");
+            sqlSession.rollback();
+        }
+
+        sqlSession.close();
+
+    }
+
+    public void insertCategoryAndMenuTest(MenuAndCategoryDTO menuAndCategory) {
+
+        SqlSession sqlSession = getSqlSession();
+        mapper = sqlSession.getMapper(ElementTestMapper.class);
+
+        // 1. 신규 카테고리 등록
+        // 2. 신규 카테고리를 가지고 있는 메뉴 등록
+        int result1 = mapper.insertNewCategory(menuAndCategory);
+        int result2 = mapper.insertNewMenu(menuAndCategory);
+
+        if(result1 > 0 && result2 > 0) {
+            System.out.println("신규 카테고리와 메뉴 등록 성공 !");
+            sqlSession.commit();
+        } else {
+            System.out.println("신규 카테고리와 메뉴 등록 실패 !");
+            sqlSession.rollback();
+        }
+
+        sqlSession.close();
+    }
 }

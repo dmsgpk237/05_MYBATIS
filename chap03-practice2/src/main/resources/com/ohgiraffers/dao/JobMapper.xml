@@ -41,13 +41,26 @@
 
     <insert id="insertJob" parameterType="com.ohgiraffers.dto.JobDTO">
         insert into job(
-        JOB_CODE
+        JOB_CODE,
         JOB_NAME
         ) values (
-        #{ jobCode }
+        #{ jobCode },
         #{ jobName }
         )
     </insert>
 
+    <update id="modifyJob" parameterType="com.ohgiraffers.dto.JobDTO">
+        update job
+        set
+        JOB_NAME = #{ jobName }
+        where
+        JOB_CODE = #{ jobCode }
+    </update>
+
+    <delete id="deleteJob" parameterType="com.ohgiraffers.dto.JobDTO">
+        delete
+        from job
+        where JOB_CODE = #{ jobCode }
+    </delete>
 
 </mapper>

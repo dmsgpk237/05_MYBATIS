@@ -17,4 +17,13 @@ public interface ElementTestMapper {
 
     List<CategoryAndMenuDTO> selectResultMapCollectionTest();
 
+    List<MenuDTO> selectSqlTest();
+
+    int insertMenuTest(MenuDTO menu);
+
+    int insertNewCategory(MenuAndCategoryDTO menuAndCategory);
+
+    int insertNewMenu(MenuAndCategoryDTO menuAndCategory);
+
+
 }

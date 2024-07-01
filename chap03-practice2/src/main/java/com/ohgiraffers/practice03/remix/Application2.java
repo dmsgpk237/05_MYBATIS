@@ -43,8 +43,8 @@ public class Application2 {
                 case 2 : jobController.selectJobByCode(inputJobCode()); break;
                 case 3 : jobController.selectJobByName(inputJobName()); break;
                 case 4 : jobController.registJob(registJob()); break;
-//                case 5 :  break;
-//                case 6 :  break;
+                case 5 : jobController.modifyJob(inputmodifyJob()); break;
+                case 6 : jobController.deleteJob(inputJobCode()); break;
                 case 9 :
                     System.out.println("프로그램을 종료합니다.");
                     return;
@@ -93,5 +93,24 @@ public class Application2 {
 
         return parameter;
     }
+
+
+    private static Map<String, String> inputmodifyJob() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("수정할 직급 코드를 입력하세요 : ");
+        String jobCode = sc.nextLine();
+
+        System.out.println("수정할 직급 이름을 입력하세요 : ");
+        String jpbName = sc.nextLine();
+
+        Map<String, String> parameter = new HashMap<>();
+        parameter.put("jobCode", jobCode);
+        parameter.put("jpbName", jpbName);
+
+        return parameter;
+    }
+
+
 
 }

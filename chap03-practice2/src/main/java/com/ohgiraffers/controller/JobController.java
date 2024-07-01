@@ -75,4 +75,31 @@ public class JobController {
         }
 
     }
+
+    public void modifyJob(Map<String, String> parameter) {
+        String jobCode = parameter.get("jobCode");
+        String jobName = parameter.get("jobName");
+
+        JobDTO job = new JobDTO();
+        job.setJobCode(jobCode);
+        job.setJobName(jobName);
+
+        if (jobService.modifyJob(job)) {
+            jobPrintResult.printSuccessMessage("update");
+        } else {
+            jobPrintResult.printErrorMessage("update");
+        }
+
+    }
+
+
+    public void deleteJob(Map<String, String> parameter) {
+        String jobCode = parameter.get("jobCode");
+
+        if (jobService.deleteJob(jobCode)) {
+            jobPrintResult.printSuccessMessage("delete");
+        } else {
+            jobPrintResult.printErrorMessage("delete");
+        }
+    }
 }
